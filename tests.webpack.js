@@ -1,6 +1,3 @@
-require('babel-polyfill');
-// some setup first
-
 var chai = require('chai');
 var chaiEnzyme = require('chai-enzyme');
 

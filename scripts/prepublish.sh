@@ -3,6 +3,6 @@
 echo "=> Compiling..."
 echo ""
 rm -rf ./dist
-NODE_ENV=production ./node_modules/.bin/webpack
+./node_modules/.bin/nwb build
 echo ""
 echo "=> Complete"
