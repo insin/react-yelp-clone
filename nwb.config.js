@@ -5,11 +5,13 @@ var isTest = process.env.NODE_ENV === 'test'
 
 var config = {
   type: 'react-app',
-  babel: {
-    stage: 0,
-    loose: 'all'
-  },
   webpack: {
+    aliases: {
+      containers: path.resolve('src/containers'),
+      components: path.resolve('src/components'),
+      utils: path.resolve('src/utils'),
+      styles: path.resolve('src/styles')
+    },
     define: {
       __GAPI_KEY__: JSON.stringify('YOURAPIKEY')
     },
@@ -28,16 +30,6 @@ var config = {
       require('autoprefixer'),
       require('cssnano')
     ],
-    extra: {
-      resolve: {
-        alias: {
-          containers: path.resolve('src/containers'),
-          components: path.resolve('src/components'),
-          utils: path.resolve('src/utils'),
-          styles: path.resolve('src/styles')
-        }
-      }
-    }
   }
 }
 
@@ -50,7 +42,7 @@ if (isTest) {
 
   // Tweak Karma config
   config.karma = {
-    tests: 'tests.webpack.js',
+    testContext: 'tests.webpack.js',
     plugins: [
       require('karma-chai'),
       require('karma-spec-reporter')
