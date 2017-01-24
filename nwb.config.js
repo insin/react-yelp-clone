@@ -19,17 +19,19 @@ var config = {
       mountId: 'root',
       title: 'yelp-clone from fullstackreact.com (with nwb)'
     },
-    loaders: {
+    rules: {
       css: {
         modules: true,
         localIdentName: (isDev ? '[path][name]__[local]__' : '') + '[hash:base64:5]'
+      },
+      postcss: {
+        plugins: [
+          require('precss'),
+          require('autoprefixer'),
+          require('cssnano')
+        ]
       }
-    },
-    postcss: [
-      require('precss'),
-      require('autoprefixer'),
-      require('cssnano')
-    ],
+    }
   }
 }
 
